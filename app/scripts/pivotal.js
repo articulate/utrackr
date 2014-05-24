@@ -47,6 +47,4 @@ var Pivotal = ( function ($) {
     postStory: postStory
   };
 
-  //Pivotal.postStory({name: "He's dead tired.", description: "This is a cool description", project_id: "958574", story_type: "bug"}, function(d) { console.log(d.story_type); })
-
 })(jQuery);
