@@ -9,17 +9,24 @@ var Pivotal = ( function ($) {
     post('/projects/' + story.project_id + '/stories', story, success, error);
   }
 
+   function displayTrackerApiResponse(stories) {
+    console.log(stories);
+   }
+
   function getProjects(success) {
     get('/projects', success);
   }
 
   function request(url, type, data, success, error) {
-    getToken().then(function(resp){
+
+    getToken().then(function(token){
       $.ajax({
         url: base_url + url,
-        headers: { 'X-TrackerToken' : resp.api_token },
         data: data,
-        type: type
+        type: type,
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader('X-TrackerToken', token);
+        }
       }).done(function(resp){
         success(resp);
       }).fail(function(err){
@@ -37,9 +44,20 @@ var Pivotal = ( function ($) {
   }
 
   function getToken() {
-    return $.ajax({
-      url: base_url + '/me'
+
+    var deferred = $.Deferred();
+
+    chrome.storage.local.get("trackr_token", function(d){
+
+      if (d.trackr_token === undefined) {
+        alert("Pivotal Tracker API Token must be set in the extension's options page.")
+        return false;
+      }
+
+      deferred.resolve(d.trackr_token);
     });
+
+    return deferred.promise();
   }
 
   return {

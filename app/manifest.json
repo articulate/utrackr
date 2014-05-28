@@ -1,12 +1,16 @@
 {
     "name": "__MSG_appName__",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "manifest_version": 2,
     "description": "__MSG_appDescription__",
+    "options_page": "options.html",
     "icons": {
         "16": "images/icon-16.png",
         "128": "images/icon-128.png"
     },
+    "permissions" : [
+        "storage"
+    ],
     "default_locale": "en",
     "background": {
         "scripts": [
@@ -14,19 +18,20 @@
             "scripts/background.js"
         ]
     },
-  "content_scripts": [
-    {
-      "matches": ["*://youtrack.articulate.com/issue/*"],
-      "css": [
-      ],
-      "js": [
-        "bower_components/jquery/dist/jquery.min.js",
-        "bower_components/html-md/dist/md.min.js",
-        "scripts/pivotal.js",
-        "scripts/contentscript.js"
-      ],
-      "run_at": "document_end",
-      "all_frames": false
-    }
-  ]
+    "content_scripts": [
+        {
+            "matches": [
+                "*://youtrack.articulate.com/issue/*"
+            ],
+            "css": [],
+            "js": [
+                "bower_components/jquery/dist/jquery.min.js",
+                "bower_components/html-md/dist/md.min.js",
+                "scripts/pivotal.js",
+                "scripts/contentscript.js"
+            ],
+            "run_at": "document_end",
+            "all_frames": false
+        }
+    ]
 }
