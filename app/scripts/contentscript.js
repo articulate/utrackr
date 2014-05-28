@@ -2,7 +2,7 @@
 
 $(function() {
 
-  $('.fsi-details-wrapper').prepend('<a title="Send to Tracker" class="utracker" href="#"><img style="width:20px;height:20px;float:left;padding-top:3px;padding-right:5px;-webkit-filter: grayscale(100%);" src="http://andycroll.com/images/2013/pivotal-tracker-fluid-icon-2013.png"/></a>');
+  $('.fsi-details-wrapper').prepend('<a title="Send to Tracker" class="utracker" href="#"><img style="width:20px;height:20px;float:left;padding-top:3px;padding-right:5px;-webkit-filter: grayscale(100%);" src="https://s3.amazonaws.com/portfoilio-share/tracker.png"/></a>');
 
   $('.utracker').on( 'click', function() {
 

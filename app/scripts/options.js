@@ -1,5 +1,7 @@
+'use strict';
+
 function save_options() {
- var token = document.getElementById("token").value;
+ var token = document.getElementById('token').value;
   chrome.storage.local.set({
     trackr_token: token
   }, function() {
@@ -13,7 +15,7 @@ function save_options() {
 }
 
 function clear_options() {
-  chrome.storage.local.remove("trackr_token", function(d){
+  chrome.storage.local.remove('trackr_token', function(){
     var status = document.getElementById('status');
     status.textContent = 'Options cleared.';
     setTimeout(function() {
@@ -22,9 +24,9 @@ function clear_options() {
   });
 }
 
-chrome.storage.local.get("trackr_token", function(d){
+chrome.storage.local.get('trackr_token', function(d){
   if (d.trackr_token !== undefined) {
-    var token = document.getElementById("token").value = d.trackr_token;
+    document.getElementById('token').value = d.trackr_token;
   }
 });
 

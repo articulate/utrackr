@@ -9,10 +9,6 @@ var Pivotal = ( function ($) {
     post('/projects/' + story.project_id + '/stories', story, success, error);
   }
 
-   function displayTrackerApiResponse(stories) {
-    console.log(stories);
-   }
-
   function getProjects(success) {
     get('/projects', success);
   }
@@ -47,10 +43,10 @@ var Pivotal = ( function ($) {
 
     var deferred = $.Deferred();
 
-    chrome.storage.local.get("trackr_token", function(d){
+    chrome.storage.local.get('trackr_token', function(d){
 
       if (d.trackr_token === undefined) {
-        alert("Pivotal Tracker API Token must be set in the extension's options page.")
+        alert('Pivotal Tracker API Token must be set in the extensions options page.');
         return false;
       }
 
